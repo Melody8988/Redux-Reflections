@@ -1,6 +1,4 @@
-# OH, THE PLACES WE'VE BEEN
-
-> **PLEASE COMMENT YOUR CODE.** Do not clone this repository. Instead, download the zip, extract the contents, `git init`, `git add .`, `git commit -m "initial commit - base project"` and add your remote. Please do this before you leave for the day.
+# React-Redux-Reflection Application
 
 Reflection is an important part of building applications and working with a team. It's common to have a retrospective on a bi-weekly basis during a project and at the end of a project. As we approach the end of teir 2, we would like you to reflect on everthing you've accomplished. For this assignment, you will be creating a reflection board. There should be two views, one to add a reflection and another to display reflections that you've added (most recent at the top). You should also be able to remove a reflection.
 
@@ -20,8 +18,6 @@ npm run client
 ```
 
 ### ADD NEW REFLECTION
-
-> NOTE: As a baseline requirement, you should use Redux to store your data. Using Sagas is a **stretch goal**.
 
 Create a form that allows users to add a new reflection. A new reflection should be added in the database with the current date by default. 
 

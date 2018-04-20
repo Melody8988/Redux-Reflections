@@ -1,8 +1,6 @@
--- Database should be reflection_board
 CREATE DATABASE "reflection_board";
 
--- Switch to "reflection_board" before running the following
--- Table to store the reflections
+-- Table that stores reflections
 CREATE TABLE "reflection" (
   "id" serial primary key,
   "topic" varchar(120),
@@ -11,7 +9,7 @@ CREATE TABLE "reflection" (
   "date" date not null default CURRENT_DATE
 );
 
--- Sample reflection
+-- Dummy Data
 INSERT INTO "reflection" ("topic", "description")
 VALUES ('What went well?', 'Gave an ice breaker at public speaking practice.'),
 ('Better next time?', 'Get more sleep.'),
