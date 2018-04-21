@@ -1,6 +1,10 @@
 import React, {Component } from 'react';
 import { connect } from 'react-redux';
 
+const mapStateToProps = reduxState => ({
+    reduxState,
+  });
+
 class AddReflection extends Component {
 
     render(){
@@ -22,4 +26,4 @@ class AddReflection extends Component {
 
 }
 
-export default AddReflection;
+export default connect(mapStateToProps)(AddReflection);

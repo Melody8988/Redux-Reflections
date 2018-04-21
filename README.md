@@ -17,6 +17,11 @@ Now that the server is running, open a new terminal tab with `cmd + t` and start
 npm run client
 ```
 
+get all existing descriptions with most recent on top
+display on DOM 
+
+post new description with time stamp 
+
 ### ADD NEW REFLECTION
 
 Create a form that allows users to add a new reflection. A new reflection should be added in the database with the current date by default. 

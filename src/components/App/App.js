@@ -12,6 +12,11 @@ const mapStateToProps = reduxState => ({
 });
 
 class App extends Component {
+
+
+
+  
+
   render() {
 
     return (

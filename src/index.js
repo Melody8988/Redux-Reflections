@@ -10,16 +10,34 @@ import createSagaMiddleware from 'redux-saga';
 import { takeEvery, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 
-// AddReflecToView = (state, action) => {
-//     console.log('reducer AddReflecToView')
-// }
+const sagaMiddleware = createSagaMiddleware();
 
-// const store = createStore(
-//     combineReducers({AddReflecToView})
-
-// )
+function* rootSaga() {
+    console.log('rootSaga loaded');
+    yield takeEvery('GET_REFLEC', fetchSaga);
+}
 
 
+const addReflecToView = (state = [], action) => {
+    if(action.type === 'GET_REFLEC'){
+        console.log('first reducer!', action)
+        axios.get('/api/reflec').then((response)=>{
+            console.log('get reflection info', response.data)
+            return state = response.data;
+        }).catch(error =>{
+            console.log('error getting reflections', error)
+        })
+    
+    }
+    return state;
+}
 
-ReactDOM.render(<Provider ><App /></Provider>, document.getElementById('root'));
+
+const store = createStore(
+    combineReducers({addReflecToView}),
+    applyMiddleware(sagaMiddleware, logger)
+)
+sagaMiddleware.run(rootSaga);
+
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 registerServiceWorker();
