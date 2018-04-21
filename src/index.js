@@ -14,22 +14,32 @@ const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga() {
     console.log('rootSaga loaded');
-    yield takeEvery('GET_REFLEC', fetchSaga);
+    yield takeEvery('GET_REFLEC', firstSaga);
 }
 
-
-const addReflecToView = (state = [], action) => {
-    if(action.type === 'GET_REFLEC'){
-        console.log('first reducer!', action)
-        axios.get('/api/reflec').then((response)=>{
-            console.log('get reflection info', response.data)
-            return state = response.data;
-        }).catch(error =>{
-            console.log('error getting reflections', error)
+function* firstSaga(action) {
+    try {
+        const reflecResponse = yield call(axios.get, '/api/reflec');
+        console.log('GET reflections', reflecResponse);
+        yield put({
+            type: 'SET_REFLEC',
+            payload: reflecResponse.data
         })
-    
+    } catch (error) {
+        console.log('firstSaga ERROR', error)
     }
-    return state;
+}
+
+//ONLY REDUCER
+const addReflecToView = (state = [], action) => {
+        switch (action.type) {
+            case 'SET_REFLEC':
+                console.log('SET_REFLEC', action.payload)
+                return action.payload
+            default:
+                return state
+        }
+    
 }
 
 
