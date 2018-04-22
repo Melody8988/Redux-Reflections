@@ -13,25 +13,23 @@ import axios from 'axios';
 const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga() {
-    console.log('rootSaga loaded');
-    yield takeEvery('GET_REFLEC', firstSaga);
-    yield takeEvery('ADD_REFLEC', secondSaga);
+    yield takeEvery('GET_REFLEC', getReflecSaga);
+    yield takeEvery('ADD_REFLEC', addReflecSaga);
 }
 
-function* firstSaga(action) {
+function* getReflecSaga(action) {
     try {
         const reflecResponse = yield call(axios.get, '/api/reflec');
-        console.log('GET reflections', reflecResponse);
         yield put({
             type: 'SET_REFLEC',
             payload: reflecResponse.data
         })
     } catch (error) {
-        console.log('firstSaga ERROR', error)
+        console.log('getReflecSaga error', error)
     }
 }
 
-function* secondSaga(action) {
+function* addReflecSaga(action) {
     try {
         const addReflec = yield call(axios.post, '/api/reflec', action.payload );
         console.log('added reflection', addReflec);
