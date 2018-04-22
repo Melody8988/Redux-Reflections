@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import axios from 'axios';
+// import { connect } from 'react-redux';
+// import axios from 'axios';
 import './App.css';
 import AddReflection from '../AddReflection/AddReflection.js'
 import ViewReflections from '../ViewReflections/ViewReflections.js'
 
 
-const mapStateToProps = reduxState => ({
-  reduxState,
-});
+// const mapStateToProps = reduxState => ({
+//   reduxState,
+// });
 
 class App extends Component {
 

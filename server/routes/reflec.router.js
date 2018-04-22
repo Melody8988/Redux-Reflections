@@ -15,4 +15,17 @@ router.get('/', (req, res)=>{
     })
 })
 
+router.post('/', (req, res) => {
+    var reflection = req.body;
+    var queryText = `INSERT INTO "reflection" ("topic", "description", "bookmarked", "date")
+    VALUES ($1, $2, $3, $4);`
+    pool.query(queryText, [reflection.topic, reflection.description, reflection.bookmarked, reflection.date]).then((response) => {
+        console.log('Succesfully posted reflection!');
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('Error in posting reflection: ', error);
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router

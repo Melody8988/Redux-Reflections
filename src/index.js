@@ -15,6 +15,7 @@ const sagaMiddleware = createSagaMiddleware();
 function* rootSaga() {
     console.log('rootSaga loaded');
     yield takeEvery('GET_REFLEC', firstSaga);
+    yield takeEvery('ADD_REFLEC', secondSaga);
 }
 
 function* firstSaga(action) {
@@ -30,8 +31,21 @@ function* firstSaga(action) {
     }
 }
 
-//ONLY REDUCER
-const addReflecToView = (state = [], action) => {
+function* secondSaga(action) {
+    try {
+        const addReflec = yield call(axios.post, '/api/reflec', action.payload );
+        console.log('added reflection', addReflec);
+        yield put({
+            type: 'POST_REFLEC',
+            payload: addReflec.data
+        })
+    } catch (error) {
+        console.log('firstSaga ERROR', error)
+    }
+}
+
+//REDUCERS
+const currentReflecToView = (state = [], action) => {
         switch (action.type) {
             case 'SET_REFLEC':
                 console.log('SET_REFLEC', action.payload)
@@ -41,9 +55,19 @@ const addReflecToView = (state = [], action) => {
         }
 }
 
+const addReflecToView = (state = [], action) => {
+    switch (action.type) {
+        case 'POST_REFLEC':
+            console.log('POST_REFLEC', action.payload)
+            return action.payload
+        default:
+            return state
+    }
+}
+
 
 const store = createStore(
-    combineReducers({addReflecToView}),
+    combineReducers({currentReflecToView, addReflecToView}),
     applyMiddleware(sagaMiddleware, logger)
 )
 sagaMiddleware.run(rootSaga);
