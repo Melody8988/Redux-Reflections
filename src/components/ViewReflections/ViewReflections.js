@@ -12,6 +12,7 @@ class ViewReflections extends Component {
         this.props.dispatch({type: 'GET_REFLEC'})
     }
 
+    //On click, make a delete request to reflec.router.js
     handleDeleteReflec = (event) => {
         let reflecToDelete = JSON.parse(event.target.value)
         console.log('in delete', reflecToDelete)
@@ -22,12 +23,15 @@ class ViewReflections extends Component {
         }).catch((error)=>{
             console.log('error deleting reflection', error)
         })
-    
-        // this.props.dispatch({
-        //     type: 'DELETE_REFLEC', 
-        //     payload: reflecToDelete
-        // })
     }
+
+    handleBookmarkReflec = (event) => {
+        let reflecToUpdate = JSON.parse(event.target.value)
+        console.log('in update', reflecToUpdate)
+
+    }
+
+
 
 
 
@@ -41,7 +45,7 @@ class ViewReflections extends Component {
                 <p>{reflec.topic}</p>
                 <p>{reflec.date}</p>
                 <button value={JSON.stringify(reflec)} onClick={this.handleDeleteReflec}>Delete</button>
-                <button>Bookmark</button>
+                <button value={JSON.stringify(reflec)} onClick={this.handleBookmarkReflec}>Bookmark</button>
             </CardHeader>
 
                 <p>{reflec.description}</p>
