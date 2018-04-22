@@ -39,7 +39,6 @@ const addReflecToView = (state = [], action) => {
             default:
                 return state
         }
-    
 }
 
 

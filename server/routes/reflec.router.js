@@ -4,7 +4,7 @@ var router = express.Router();
 
 router.get('/', (req, res)=>{
     const currentDescriptions = req.query.id;
-    const queryText = `SELECT * from "reflection"`
+    const queryText = `SELECT * from "reflection" ORDER BY date DESC`
     pool.query(queryText).then((result)=>{
     res.send(result.rows)
     console.log('test')

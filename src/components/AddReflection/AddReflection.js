@@ -5,7 +5,22 @@ const mapStateToProps = reduxState => ({
     reduxState,
   });
 
+
 class AddReflection extends Component {
+    constructor(props){
+        super(props)
+    
+        this.state={
+          newRefelc : '',
+        }
+      }
+
+      handleNewReflec = () =>{
+        this.props.dispatch({
+            type: 'ADD_REFLEC',
+            payload: this.state.newReflec
+        })
+    }
 
     render(){
         return(
@@ -18,8 +33,12 @@ class AddReflection extends Component {
             <br/>
             <textarea rows="4" cols="50"> 
             </textarea>
+            <h3>Date</h3>
             <br/>
-            <button>Submit</button>
+            <textarea type="number"rows="1" cols="20"> 
+            </textarea>
+            <br/>
+            <button onClick={this.handleNewReflec}>Submit</button>
             </div>
         )
     }
