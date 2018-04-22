@@ -2,6 +2,7 @@ import React, {Component } from 'react';
 import { connect } from 'react-redux';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import axios from 'axios';
 
 
 class ViewReflections extends Component {
@@ -13,7 +14,15 @@ class ViewReflections extends Component {
 
     handleDeleteReflec = (event) => {
         let reflecToDelete = JSON.parse(event.target.value)
-        console.log('in delete', event.target.value)
+        console.log('in delete', reflecToDelete)
+        console.log('id', reflecToDelete.id)
+        axios.delete('/api/reflec/' + reflecToDelete.id)
+        .then((response)=>{
+            // this.componentDidMount();
+        }).catch((error)=>{
+            console.log('error deleting reflection', error)
+        })
+    
         // this.props.dispatch({
         //     type: 'DELETE_REFLEC', 
         //     payload: reflecToDelete

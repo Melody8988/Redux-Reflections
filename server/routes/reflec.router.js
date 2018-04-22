@@ -7,8 +7,7 @@ router.get('/', (req, res)=>{
     const queryText = `SELECT * from "reflection" ORDER BY date DESC`
     pool.query(queryText).then((result)=>{
     res.send(result.rows)
-    console.log('test')
-    console.log('test', result.rows)
+    console.log(result.rows)
     }).catch((error) =>{
         console.log('error getting current descriptions ')
         res.sendStatus(500)
@@ -29,6 +28,7 @@ router.post('/', (req, res) => {
 })
 
 router.delete('/:id', (req, res)=>{
+    console.log('hello')
     console.log('req.params test', req.params);
     let reflecId = req.params.id;
     console.log('successful router.delete', reflecId );
