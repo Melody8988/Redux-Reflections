@@ -49,8 +49,8 @@ router.put('/:id', (req, res)=>{
     console.log('PUT for bookmarked', req.body, req.params);
     const bookmarkBoolean = req.body;
     const reflecId = req.params.id;
-    const queryText = `UPDATE "reflection" SET "checkedIn" = $1 WHERE "id" = $2;`;
-    pool.query(queryText, [bookmarkBoolean.checkedIn, reflecId])
+    const queryText = `UPDATE "reflection" SET "bookmarked" = $1 WHERE "id" = $2;`;
+    pool.query(queryText, [bookmarkBoolean.bookmarked, reflecId])
     .then((response)=>{
       res.sendStatus(200);
     }).catch((error)=>{

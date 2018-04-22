@@ -22,17 +22,21 @@ class ViewReflections extends Component {
             this.componentDidMount();
         }).catch((error)=>{
             console.log('error deleting reflection', error)
-        })
-    }
+        })//end catch
+    }//end handleDeleteReflec 
 
     handleBookmarkReflec = (event) => {
         let reflecToUpdate = JSON.parse(event.target.value)
-        console.log('in update', reflecToUpdate)
-
-    }
-
-
-
+        console.log('in update', reflecToUpdate.bookmarked)
+        reflecToUpdate.bookmarked = !reflecToUpdate.bookmarked
+        console.log('new bookmark status:', reflecToUpdate.bookmarked)
+        axios.put('/api/reflec/' + reflecToUpdate.id, {bookmarked: reflecToUpdate.bookmarked})
+        .then((response)=>{
+            this.componentDidMount();
+        }).catch((error)=>{
+            console.log('error updating bookmark', error)
+        })//end catch
+    }//end handleBookmarkReflec
 
 
     render(){
