@@ -9,12 +9,16 @@ import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, call, put } from 'redux-saga/effects';
 import axios from 'axios';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga() {
     yield takeEvery('GET_REFLEC', getReflecSaga);
     yield takeEvery('ADD_REFLEC', addReflecSaga);
+    // yield takeEvery('DELETE_REFLEC', deleteReflecSaga);
+
 }
 
 function* getReflecSaga(action) {
@@ -42,6 +46,19 @@ function* addReflecSaga(action) {
     }
 }
 
+// function* deleteReflecSaga(action) {
+//     try {
+//         const deleteReflec = yield call(axios.delete, '/api/reflec/' + action.payload.id );
+//         yield put({
+//             type: 'REMOVE_REFLEC',
+//             payload: deleteReflec.data
+//         })
+//     } catch (error) {
+//         console.log('deleteReflecSaga error', error)
+//     }
+//     console.log('in deletereflecsaga', action.payload.id)
+// }
+
 //REDUCERS
 const currentReflecToView = (state = [], action) => {
         switch (action.type) {
@@ -63,6 +80,15 @@ const addReflecToView = (state = [], action) => {
     }
 }
 
+// const deleteReflecOnView = (state = [], action) => {
+//     switch (action.type) {
+//         case 'REMOVE_REFLEC':
+//             console.log('REMOVE_REFLEC', action.payload)
+//             return action.payload
+//         default:
+//             return state
+//     }
+// }
 
 const store = createStore(
     combineReducers({currentReflecToView, addReflecToView}),
@@ -70,5 +96,7 @@ const store = createStore(
 )
 sagaMiddleware.run(rootSaga);
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+
+
+ReactDOM.render(<Provider store={store}><MuiThemeProvider><App /></MuiThemeProvider></Provider>, document.getElementById('root'));
 registerServiceWorker();

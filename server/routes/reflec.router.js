@@ -28,4 +28,17 @@ router.post('/', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res)=>{
+    console.log('req.params test', req.params);
+    let reflecId = req.params.id;
+    console.log('successful router.delete', reflecId );
+    const queryText = 'DELETE FROM "reflection" WHERE "id" = $1;'
+    pool.query(queryText, [reflecId]).then((response)=>{
+      console.log(response);
+      res.sendStatus(200);
+    }).catch((err)=>{
+      res.sendStatus(500);
+    });//end catch
+});//end delete
+
 module.exports = router
