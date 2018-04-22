@@ -18,7 +18,7 @@ class ViewReflections extends Component {
         console.log('id', reflecToDelete.id)
         axios.delete('/api/reflec/' + reflecToDelete.id)
         .then((response)=>{
-            // this.componentDidMount();
+            this.componentDidMount();
         }).catch((error)=>{
             console.log('error deleting reflection', error)
         })
