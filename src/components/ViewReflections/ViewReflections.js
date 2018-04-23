@@ -51,8 +51,9 @@ class ViewReflections extends Component {
                 <button value={JSON.stringify(reflec)} onClick={this.handleDeleteReflec}>Delete</button>
                 <button value={JSON.stringify(reflec)} onClick={this.handleBookmarkReflec}>Bookmark</button>
             </CardHeader>
-
-                <p>{reflec.description}</p>
+                <p>Bookmarked: {JSON.stringify(reflec.bookmarked)}</p>
+                <p className="viewDescription" >{reflec.description}</p>
+            
             </Card>
             </div>)
             })

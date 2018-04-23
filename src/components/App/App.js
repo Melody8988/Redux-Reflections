@@ -22,7 +22,7 @@ class App extends Component {
           <nav>
             <ul>
               <li>
-                <Link to="/add">Add Reflection</Link>
+                <Link to="/add">Add New Reflection</Link>
               </li>
               <li>
                 <Link to="/view">View Reflections</Link>

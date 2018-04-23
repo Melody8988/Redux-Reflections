@@ -8,6 +8,7 @@ class AddReflection extends Component {
         this.state = {
           newReflec: {topic:'', 
           description:'',  
+          bookmarked:'',
           date:''}
         }
       }
