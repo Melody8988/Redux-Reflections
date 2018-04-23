@@ -47,4 +47,16 @@ li a:hover {
   padding: 20px;
 }
 
+textarea { 
+  font-size: 20px; 
+}
+
+.submitBtn {
+  margin: 15px;
+}
+
+.topic{
+  font-size: 25px;
+}
+
 

@@ -2,6 +2,7 @@ import React, {Component } from 'react';
 import { connect } from 'react-redux';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import Moment from 'react-moment';
 import axios from 'axios';
 
 
@@ -46,8 +47,8 @@ class ViewReflections extends Component {
             <div key = {reflec.id}>
             <Card>
             <CardHeader>
-                <p>{reflec.topic}</p>
-                <p>{reflec.date}</p>
+                <p className="topic">{reflec.topic}</p>
+                <p> Added on: <Moment format="MM/DD/YYYY">{reflec.date}</Moment></p>
                 <button value={JSON.stringify(reflec)} onClick={this.handleDeleteReflec}>Delete</button>
                 <button value={JSON.stringify(reflec)} onClick={this.handleBookmarkReflec}>Bookmark</button>
             </CardHeader>

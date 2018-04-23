@@ -1,6 +1,6 @@
 # React-Redux-Reflection Application
 
-Reflection is an important part of building applications and working with a team. It's common to have a retrospective on a bi-weekly basis during a project and at the end of a project. As we approach the end of teir 2, we would like you to reflect on everthing you've accomplished. For this assignment, you will be creating a reflection board. There should be two views, one to add a reflection and another to display reflections that you've added (most recent at the top). You should also be able to remove a reflection.
+Reflection is an important part of building applications and working in teams. In this app, there are two views. The first allows the user to add new reflections, and the second allows the user to view all the existing reflections with the ability to bookmark them and delete them. Most recent reflections display at the top. 
 
 ### SETUP
 
@@ -9,16 +9,14 @@ Create your database and tables using the provided `data.sql` file. Start the se
 ```
 npm install
 npm run server
-```
 
+```
 Now that the server is running, open a new terminal tab with `cmd + t` and start the react client app.
 
 ```
 npm run client
-```
 
-post new description with time stamp 
-design
+```
 
 ### ADD NEW REFLECTION
 
