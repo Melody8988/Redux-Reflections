@@ -1,10 +1,11 @@
 # React-Redux-Reflection Application
 
-Reflection is an important part of building applications and working in teams. In this app, there are two views. The first allows the user to add new reflections, and the second allows the user to view all the existing reflections with the ability to bookmark them and delete them. Most recent reflections display at the top. 
+Reflection is an important part of building applications and working in teams. In this app, there are two views. The first view allows the user to add new reflections, and the second allows the user to view all the existing reflections with the ability to bookmark them and delete them. Most recent reflections display at the top. 
+
+Live version on Heroku: 
 
 ### SETUP
 
-Create your database and tables using the provided `data.sql` file. Start the server.
 
 ```
 npm install
@@ -18,27 +19,32 @@ npm run client
 
 ```
 
-### ADD NEW REFLECTION
+##DATABASE
 
-Create a form that allows users to add a new reflection. A new reflection should be added in the database with the current date by default. 
+```SQL
+CREATE DATABASE "reflection_board";
 
-![add new reflection](wireframes/screen-one.png)
+-- Table that stores reflections
+CREATE TABLE "reflection" (
+  "id" serial primary key,
+  "topic" varchar(120),
+  "description" varchar(480),
+  "bookmarked" boolean default false,
+  "date" date not null default CURRENT_DATE
+);
 
-### DISPLAY REFLECTIONS
-
-Display a list of the existing reflections. The most recently added reflection should appear at the top of the list. Allow the user to delete existing reflections. Prompt the user to confrim prior to deleting the reflection from the database. Add a button that allows users to bookmark a reflection.
-
-![display reflections](wireframes/screen-two.png)
+-- Dummy Data
+INSERT INTO "reflection" ("topic", "description")
+VALUES ('What went well?', 'Gave an ice breaker at public speaking practice.'),
+('Better next time?', 'Get more sleep.'),
+('What went well?', 'Built a full stack web application!'),
+('Better next time?', 'Use trello to manage tasks.');
+```
 
 ## STRETCH GOALS
 
-- Update this README.md to describe the project in your own words
-- Deploy your project to Heroku
 - Improve the stying of the app using Material-UI cards, buttons, nav bar and icons
-- Move your HTTP requests into sagas
+- Move HTTP requests into sagas
 - Add the ability to update an existing reflection
 - Move reflection topics into a separate table and use SQL JOINs
-- Allow users to include an image with the reflection using [Filestack](https://www.filestack.com/)
 - Ability to filter reflections based on topic
-
-> NOTE: These stretch goals are intended to be completed in order.

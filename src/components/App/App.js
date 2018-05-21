@@ -6,8 +6,8 @@ import ViewReflections from '../ViewReflections/ViewReflections.js'
 
 class App extends Component {
 
-  
-  
+
+
 
   render() {
 
@@ -16,22 +16,22 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Reflection Board</h1>
         </header>
-        <br/>
+        <br />
         <Router>
-        <div> 
-          <nav>
-            <ul>
-              <li>
-                <Link to="/add">Add New Reflection</Link>
-              </li>
-              <li>
-                <Link to="/view">View Reflections</Link>
-              </li>
-            </ul>
-          </nav>
-            <Route exact path="/add" component={AddReflection}/>
-            <Route exact path="/view" component={ViewReflections}/>
-        </div>
+          <div>
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/add">Add New Reflection</Link>
+                </li>
+                <li>
+                  <Link to="/view">View Reflections</Link>
+                </li>
+              </ul>
+            </nav>
+            <Route exact path="/add" component={AddReflection} />
+            <Route exact path="/view" component={ViewReflections} />
+          </div>
         </Router>
       </div>
     );
