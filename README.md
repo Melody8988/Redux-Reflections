@@ -19,7 +19,7 @@ npm run client
 
 ```
 
-##DATABASE
+## DATABASE
 
 ```SQL
 CREATE DATABASE "reflection_board";
